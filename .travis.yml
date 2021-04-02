@@ -3,6 +3,7 @@ sudo: false
 dist: trusty
 
 install: 
+- apt-get install gem -y
 - gem install bundler
 - bundle install
 
