@@ -3,7 +3,7 @@ sudo: false
 dist: trusty
 
 install: 
-- apt-get install gem -y
+- apt-get install rubygems
 - gem install bundler
 - bundle install
 
