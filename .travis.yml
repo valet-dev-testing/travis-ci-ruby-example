@@ -1,9 +1,18 @@
 language: ruby
 sudo: false
 dist: trusty
+rvm:
+- 1.9.3
+- 2.0.0
+- 2.1.0
 
 install: 
 - gem install bundler
 
 script:
 - echo "hello!"
+
+jobs: 
+  include: 
+    language: node_js
+    script: echo "child"
