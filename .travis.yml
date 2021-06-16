@@ -14,5 +14,4 @@ script:
 
 jobs: 
   include: 
-    language: node_js
-    script: echo "child"
+    - script: echo "child"
