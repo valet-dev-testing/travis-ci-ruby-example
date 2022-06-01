@@ -1,0 +1,26 @@
+name: TravisTrigger
+
+on:
+  # Triggers the workflow every 5 minutes
+  schedule:
+    - cron: "*/5 * * * *"
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger a build in Travis
+        env:
+          TRAVIS_TOKEN: ${{ secrets.TRAVIS_TOKEN }}
+        run: |
+          for i in {0..5}
+          do
+            curl -s -X POST \
+            -H "Content-Type: application/json" \
+            -H "Accept: application/json" \
+            -H "Travis-API-Version: 3" \
+            -H "Authorization: token $TRAVIS_TOKEN" \
+            https://api.travis-ci.com/repo/valet-dev-testing%2Ftravis-ci-ruby-example/requests
+            echo "Trigger #$i"
+          done
